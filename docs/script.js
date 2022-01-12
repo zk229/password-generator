@@ -58,19 +58,8 @@ function generateCharSet() {
     }
   }
   if(input.special == "Y") {
-    for(var i = 33; i <= 47; i++) {
-      charSet.push(String.fromCharCode(i));
-    }
-    for(var i = 58; i <= 64; i++) {
-      charSet.push(String.fromCharCode(i));
-    }
-    for(var i = 91; i <= 96; i++) {
-      charSet.push(String.fromCharCode(i));
-    }
-    charSet.push("{");
-    charSet.push("|");
-    charSet.push("}");
-    charSet.push("~");
+    var specialChars = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+    charSet = charSet.concat(specialChars.split(''));
   }
 }
 
