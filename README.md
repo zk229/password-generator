@@ -1,0 +1,5 @@
+## Password Generator
+
+The purpose of this activity was to use Javascript to generate a password based on parameters input by the user.  When the "Generate Password" button is clicked, the user will have to specify a length as well as a subset of characters to generate from.  The password is then randomly generated from the valid subset of characters.
+
+Throughout the development of this product, a variety of computational techniques were implemented.  The original code that I wrote was all in one giant function with many separate variables.  The code was split into logical functions and the variables were consolidated into a single object representing all user input.  The special characters original encompassed all ASCII characters that were not alphanumeric, but it was later restricted to only contain the [valid special characters](https://owasp.org/www-community/password-special-characters) from the OWASP Foundation.
