@@ -1,33 +1,36 @@
 // Generate a password
-function generatePassword() {
-  var length = 0;
+var length = 0;
+var lowercase = "";
+var uppercase = "";
+var numeric = "";
+var special = "";
+
+function getInput() {
   // Continue prompting until a valid input is received
   while(length < 8 || length > 128) {
     length = window.prompt("How long do you want your password to be? (8-128)");
   }
-  var lowercase = "";
   while(lowercase != "Y" && lowercase != "N") {
     lowercase = window.prompt("Do you want to include lowercase characters? (Y/N)");
   }
-  var uppercase = "";
   while(uppercase != "Y" && uppercase != "N") {
     uppercase = window.prompt("Do you want to include uppercase characters? (Y/N)");
   }
-  var numeric = "";
   while(numeric != "Y" && numeric != "N") {
     numeric = window.prompt("Do you want to include numeric characters? (Y/N)");
   }
-  var special = "";
   while(special != "Y" && special != "N") {
     special = window.prompt("Do you want to include special characters? (Y/N)");
   }
   // Make sure the user has selected "Y" at least once - otherwise, restart
   if(lowercase == "N" && uppercase == "N" && numeric == "N" && special == "N") {
     window.alert("Error! You didn't include any characters in your set.  Try again.");
-    return generatePassword();
+    getInput();
   }
-  
-  var charSet = [];
+}
+
+function generateCharSet() {
+  charSet = [];
   // Automate generation of valid character set using ASCII values
   if(lowercase == "Y") {
     for(var i = 97; i <= 122; i++) {
@@ -59,7 +62,11 @@ function generatePassword() {
     charSet.push("}");
     charSet.push("~");
   }
+}
 
+function generatePassword() {
+  getInput();
+  generateCharSet();
   // Generate password
   var finalPassword = "";
   for(var i = 0; i < length; i++) {
